@@ -13,25 +13,18 @@ namespace Scripts
         [SerializeField] private PlayerInput _playerInput;
 
         private TankMovement _tankMovement;
-        private IBulletFactory _bulletFactory;
-        public float shootCooldown = 0.5f;
-        private float lastShootTime;
+        private TankShooter _tankShooter;
+        
 
         private void Start()
         {
+            IBulletFactory bulletFactory = new BulletFactory(_bulletPrefab, this.transform, _bulletSpawnPosition);
+            
             _tankMovement = new TankMovement(GetComponent<Rigidbody2D>());
-            _bulletFactory = new BulletFactory(_bulletPrefab, this.transform, _bulletSpawnPosition);
+            _tankShooter = new TankShooter(_playerInput, bulletFactory, _playerTankConfig.ShootCooldown);
         }
 
-        private void Update()
-        {
-            if (_playerInput.IsShoot && Time.time - lastShootTime >= shootCooldown)
-            {
-                _bulletFactory.CreateBullet();
-                lastShootTime = Time.time;
-            }
-        }
-
+        private void Update() => _tankShooter.ShootUpdate();
         private void FixedUpdate() => _tankMovement.Move(_playerInput.Direction, _playerTankConfig.Speed);
     }
 }

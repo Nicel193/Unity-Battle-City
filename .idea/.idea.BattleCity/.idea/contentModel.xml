@@ -11,19 +11,24 @@
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
-          <e p="BulletFactory.cs" t="Include" />
+          <e p="Bullet" t="Include">
+            <e p="BulletFactory.cs" t="Include" />
+            <e p="DefaultBullet.cs" t="Include" />
+            <e p="IBullet.cs" t="Include" />
+            <e p="IBulletFactory.cs" t="Include" />
+          </e>
           <e p="Configs" t="Include">
             <e p="PlayerTankConfig.cs" t="Include" />
           </e>
-          <e p="DefaultBullet.cs" t="Include" />
           <e p="GameInput" t="Include">
             <e p="IPlayerInput.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
           </e>
-          <e p="IBullet.cs" t="Include" />
-          <e p="IBulletFactory.cs" t="Include" />
-          <e p="PlayerTank.cs" t="Include" />
-          <e p="TankMovement.cs" t="Include" />
+          <e p="Tank" t="Include">
+            <e p="PlayerTank.cs" t="Include" />
+            <e p="TankMovement.cs" t="Include" />
+            <e p="TankShooter.cs" t="Include" />
+          </e>
         </e>
         <e p="textures" t="Include" />
       </e>
